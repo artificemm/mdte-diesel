@@ -2,51 +2,27 @@
   <div id="app">
     <div id="display">
       <h2>
-        Tanque:
-        <br/>
-        {{ selected_tank }}
+        Tanque: {{ selected_tank }}
       </h2>
       <h2>
         {{ selected_index }} cm.
       </h2>
-      <h2>
-        ≈ {{ lookup }} litros.
+      <h2 class="result">
+        ≈ {{ lookup }} l
       </h2>
     </div>
-    <div>
-      <h2>Botones tanque</h2>
-      <div class="switch-field">
-        <input type="radio" value="284" v-model="selected_tank">
-        <label for="radio1">284</label>
-      </div>
-      <div class="switch-field">
-        <input type="radio" value="379" v-model="selected_tank">
-        <label for="radio2">379</label>
-      </div>
-      <div class="switch-field">
-        <input type="radio" value="454" v-model="selected_tank">
-        <label for="radio3">454</label>
-      </div>
-      <div class="switch-field">
-        <input type="radio" value="511" v-model="selected_tank">
-        <label for="radio4">511</label>
-      </div>
-      <div class="switch-field">
-        <input type="radio" value="568" v-model="selected_tank">
-        <label for="radio5">568</label>
-      </div>
+    <div id="buttons">
+      <button v-for="tank in Object.keys(this.table)" :value="tank" @click="setTank(tank)">{{tank}}</button>
+      <button @click="reset_lookup">Reiniciar</button>
     </div>
 
-    <div id="slider`">
+    <div id="slider">
       <h2>Altura: </h2>
       <br/>
       <div>
         <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" size="360px"></vue-slider>
       </div>
     </div>
-
-    <button @click="reset_lookup">Reiniciar</button>
-
   </div>
 </template>
 
@@ -67,7 +43,7 @@ export default {
         '454': [0.00, 1.61, 4.53, 8.29, 12.69, 17.67, 23.08, 28.94, 35.17, 41.73, 48.63, 55.79, 63.22, 70.90, 78.89, 86.89, 95.15, 103.61, 112.21, 120.96, 129.84, 138.82, 147.96, 157.13, 166.41, 175.79, 185.17, 194.64, 204.13, 213.68, 223.24, 232.80],
         '511': [0.00, 1.33, 3.74, 6.85, 10.48, 14.59, 19.05, 23.90, 29.04, 34.46, 40.16, 46.06, 52.21, 58.63, 65.05, 71.75, 78.57, 85.54, 92.66, 99.88, 107.22, 114.63, 122.18, 129.75, 137.41, 145.16, 152.90, 160.72, 168.56, 176.44, 184.34, 192.23],
         '568': [0.00, 1.03, 2.88, 5.27, 8.07, 11.24, 14.67, 18.40, 22.36, 26.54, 30.92, 35.47, 40.20, 45.08, 50.09, 55.40, 60.71, 65.88, 71.35, 76.82, 82.56, 88.27, 94.09, 99.92, 105.82, 111.78, 117.75, 123.77, 129.81, 135.88, 141.96, 148.04]
-      },
+      }
     }
   },
   computed: {
@@ -79,24 +55,14 @@ export default {
     reset_lookup: function() {
       this.selected_tank = '284';
       this.selected_index = 0;
-      return
+    },
+    setTank: function(tank) {
+      this.selected_tank = tank;
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-#display{
-  background: #F59A2C;
-}
 
 </style>
