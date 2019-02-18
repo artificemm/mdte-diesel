@@ -19,13 +19,10 @@
       </div>
     </div>
     <div id="buttons">
-      <button v-for="tank in Object.keys(this.table)" :value="tank" @click="setTank(tank)">{{tank}}</button>
-      <button @click="reset_lookup">
-        C
-        <!-- <i class="fa fa-times-circle"></i> -->
-      </button>
-      <button @click="decreaseIndex">-</button>      
-      <button @click="increaseIndex">+</button>      
+      <button v-for="tank in Object.keys(this.table)" :value="tank" @click="setTank(tank)" class="button">{{tank}}</button>
+      <button @click="reset_lookup" class="button">C</button>
+      <button @click="decreaseIndex" class="button">-</button>
+      <button @click="increaseIndex" class="button">+</button>
     </div>
 
     <div id="slider">
@@ -59,14 +56,14 @@ export default {
     }
   },
   computed: {
-  lookup: function() {
-    return this.table[this.selected_tank][this.selected_index];
+  lookup: function () {
+    return this.table[this.selected_tank][this.selected_index]
     }
   },
   methods: {
-    reset_lookup: function() {
-      this.selected_tank = '284';
-      this.selected_index = 0;
+    reset_lookup: function () {
+      this.selected_tank = '284'
+      this.selected_index = 0
     },
     setTank: function (tank) {
       this.selected_tank = tank
@@ -74,15 +71,11 @@ export default {
     increaseIndex: function () {
       if (this.selected_index < 31) {
         this.selected_index += 1
-      } else {
-        return
       }
     },
     decreaseIndex: function () {
-      if (this.selected_index > 1) {
+      if (this.selected_index > 0) {
         this.selected_index -= 1
-      } else {
-        return
       }
     }
   }
