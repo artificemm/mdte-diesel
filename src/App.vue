@@ -18,11 +18,13 @@
         </div>
       </div>
     </div>
-    <div id="buttons">
+    <div class="calculator-keys">
       <button v-for="tank in Object.keys(this.table)" :value="tank" @click="setTank(tank)" class="button">{{tank}}</button>
+    </div>
+    <div class="calculator-keys function-keys">
       <button @click="reset_lookup" class="button">C</button>
       <button @click="decreaseIndex" class="button">-</button>
-      <button @click="increaseIndex" class="button">+</button>
+      <button @click="increaseIndex" class="button">+</button>      
     </div>
 
     <div id="slider">
@@ -83,5 +85,8 @@ export default {
 </script>
 
 <style>
-
+.calculator-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 </style>
