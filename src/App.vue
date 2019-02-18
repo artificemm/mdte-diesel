@@ -2,18 +2,30 @@
   <div id="app">
     <div id="display">
       <h2>
-        Tanque: {{ selected_tank }}
+        <i class="fas fa-tachometer-alt"></i>
+        {{ selected_tank }}
       </h2>
       <h2>
-        {{ selected_index }} cm.
+        <i class="fas fa-ruler-vertical"></i>
+        {{ selected_index }} cm
       </h2>
-      <h2 class="result">
-        ≈ {{ lookup }} l
-      </h2>
+      <div class="columns">
+        <div class="column">
+          <h1 class="result">
+            <i class="fas fa-flask"></i>
+            {{ lookup }} l
+          </h1>
+        </div>
+      </div>
     </div>
     <div id="buttons">
       <button v-for="tank in Object.keys(this.table)" :value="tank" @click="setTank(tank)">{{tank}}</button>
-      <button @click="reset_lookup">Reiniciar</button>
+      <button @click="reset_lookup">
+        C
+        <!-- <i class="fa fa-times-circle"></i> -->
+      </button>
+      <button @click="decreaseIndex">-</button>      
+      <button @click="increaseIndex">+</button>      
     </div>
 
     <div id="slider">
@@ -56,8 +68,22 @@ export default {
       this.selected_tank = '284';
       this.selected_index = 0;
     },
-    setTank: function(tank) {
-      this.selected_tank = tank;
+    setTank: function (tank) {
+      this.selected_tank = tank
+    },
+    increaseIndex: function () {
+      if (this.selected_index < 31) {
+        this.selected_index += 1
+      } else {
+        return
+      }
+    },
+    decreaseIndex: function () {
+      if (this.selected_index > 1) {
+        this.selected_index -= 1
+      } else {
+        return
+      }
     }
   }
 }
