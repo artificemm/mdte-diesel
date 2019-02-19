@@ -30,7 +30,7 @@
     <div id="slider">
       <h2>Altura: </h2>
       <br/>
-      <div>
+      <div class="index_slider">
         <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" size="360px"></vue-slider>
       </div>
     </div>
@@ -85,6 +85,18 @@ export default {
 </script>
 
 <style>
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 .calculator-screen {
   width: 100%;
   /*font-size: 5rem;*/
@@ -99,6 +111,13 @@ export default {
 
 .calculator-keys {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.index_slider {
+  width: 80%;
+  margin: 0 auto;
 }
 </style>
