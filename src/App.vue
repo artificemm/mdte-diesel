@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <div id="display">
-      <h2>
+    <div id="display" class="calculator-screen">
+      <p>
         <i class="fas fa-tachometer-alt"></i>
         {{ selected_tank }}
-      </h2>
-      <h2>
+      </p>
+      <p>
         <i class="fas fa-ruler-vertical"></i>
         {{ selected_index }} cm
-      </h2>
+      </p>
       <div class="columns">
         <div class="column">
           <h1 class="result">
@@ -85,6 +85,18 @@ export default {
 </script>
 
 <style>
+.calculator-screen {
+  width: 100%;
+  /*font-size: 5rem;*/
+  height: 80px;
+  border: none;
+  background-color: #252525;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
 .calculator-keys {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
