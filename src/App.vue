@@ -4,7 +4,7 @@
       <div class="column is-narrow-mobile">
         <p class="title-alt">
           <i class="fas fa-tachometer-alt"></i>
-          {{ selected_tank }}          
+          {{ selected_tank }}
         </p>
       </div>
       <div class="column is-narrow-mobile">
@@ -13,11 +13,11 @@
       </div>
       <div class="column">
             <i class="fas fa-flask"></i>
-            {{ lookup }} l        
+            {{ lookup }} l
       </div>
     </div>
     <div class="calculator-keys">
-      <button v-for="tank in computed_tanks" v-bind:value="tank" @click="setTank(tank)" v-bind:class="['button is-rounded', [selected_tank === tank ? 'is-link is-active' : '']]">{{tank}}</button>
+      <button v-for="tank in computed_tanks" v-bind:value="tank" v-bind:key="tank.id" v-on:click="setTank(tank)" v-bind:class="['button is-rounded', [selected_tank === tank ? 'is-link is-active' : '']]">{{tank}}</button>
     </div>
     <div class="calculator-keys function-keys">
       <button @click="reset_lookup" class="button is-rounded">C</button>
@@ -80,9 +80,6 @@ export default {
       if (this.selected_index > 0) {
         this.selected_index -= 1
       }
-    },
-    isActive: function () {
-
     }
   }
 }
