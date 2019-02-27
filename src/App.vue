@@ -112,7 +112,7 @@ body {
 
 .calculator-screen {
   width: 100%;
-  font-size: 5rem;
+  font-size: 4rem;
   height: 120px;
   border: none;
   background-color: #252525;
