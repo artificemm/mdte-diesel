@@ -1,19 +1,8 @@
 <template>
   <div id="app container">
     <div id="display" class="columns calculator-screen">
-<!--       <div class="column is-narrow-mobile">
-        <p class="title-alt">
-          <i class="fas fa-tachometer-alt"></i>
-          {{ selected_tank }}
-        </p>
-      </div>
-      <div class="column is-narrow-mobile">
-        <i class="fas fa-ruler-vertical"></i>
-        {{ selected_index }} cm
-      </div> -->
       <div class="column">
-            <i class="fas fa-flask"></i>
-            {{ lookup }} l
+        {{ lookup }}
       </div>
     </div>
     <h2 class="title has-text-centered">Tanques</h2>
