@@ -1,7 +1,7 @@
 <template>
   <div id="app container">
     <div id="display" class="columns calculator-screen">
-      <div class="column is-narrow-mobile">
+<!--       <div class="column is-narrow-mobile">
         <p class="title-alt">
           <i class="fas fa-tachometer-alt"></i>
           {{ selected_tank }}
@@ -10,14 +10,15 @@
       <div class="column is-narrow-mobile">
         <i class="fas fa-ruler-vertical"></i>
         {{ selected_index }} cm
-      </div>
+      </div> -->
       <div class="column">
             <i class="fas fa-flask"></i>
             {{ lookup }} l
       </div>
     </div>
+    <h2 class="title has-text-centered">Tanques</h2>
     <div class="calculator-keys">
-      <button v-for="tank in computed_tanks" v-bind:value="tank" v-bind:key="tank.id" v-on:click="setTank(tank)" v-bind:class="['button is-rounded', [selected_tank === tank ? 'is-link is-active' : '']]">{{tank}}</button>
+      <button v-for="tank in computed_tanks" v-bind:value="tank" v-bind:key="tank.id" v-on:click="setTank(tank)" v-bind:class="['button is-rounded', [ isSelected(tank) ? 'is-link is-active' : '']]" v-bind:disabled="isSelected(tank)">{{tank}}</button>
     </div>
     <div class="calculator-keys function-keys">
       <button @click="reset_lookup" class="button is-rounded">C</button>
@@ -30,7 +31,7 @@
       <div class="index_slider">
         <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" size="360px"></vue-slider>
       </div>
-      <h2 class="title has-text-centered">Altura</h2>
+      <h2 class="title has-text-centered">Altura: {{selected_index}} cm</h2>
     </div>
   </div>
 </template>
@@ -80,6 +81,9 @@ export default {
       if (this.selected_index > 0) {
         this.selected_index -= 1
       }
+    },
+    isSelected: function (tank) {
+      return this.selected_tank === tank
     }
   }
 }
@@ -87,7 +91,7 @@ export default {
 
 <style>
 
-/*html {
+html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
@@ -96,11 +100,19 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-}*/
+}
+
+body {
+  background-attachment: fixed;
+  background-image: url('/img/intro.svg');
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
 .calculator-screen {
-  /*width: 100%;*/
-  /*font-size: 5rem;*/
+  width: 100%;
+  font-size: 5rem;
   height: 120px;
   border: none;
   background-color: #252525;
