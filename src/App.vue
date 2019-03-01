@@ -2,6 +2,7 @@
   <div id="app container">
     <div id="display" class="columns calculator-screen">
       <div class="column">
+       <i class="fas fa-flask"></i>
         {{ lookup }}
       </div>
     </div>
@@ -18,7 +19,7 @@
     <div id="slider">
       <br/>
       <div class="index_slider">
-        <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" size="360px"></vue-slider>
+        <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" :dotSize="50" :piecewise="true" size="360px"></vue-slider>
       </div>
       <h2 class="title has-text-centered">Altura: {{selected_index}} cm</h2>
     </div>
@@ -101,7 +102,7 @@ body {
 
 .calculator-screen {
   width: 100%;
-  font-size: 4rem;
+  font-size: 3rem;
   height: 120px;
   border: none;
   background-color: #252525;
