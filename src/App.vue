@@ -1,12 +1,10 @@
 <template>
   <div id="app container">
-    <div id="display" class="columns calculator-screen">
-      <div class="column">
-       <i class="fas fa-flask"></i>
-        {{ lookup }}
-      </div>
+    <div id="display" class="calculator-screen">
+     <i class="fas fa-flask"></i>
+      {{ lookup }}
     </div>
-    <h2 class="title has-text-centered">Tanques</h2>
+    <h3 class="title is-3 has-text-centered">Tanques</h3>
     <div class="calculator-keys">
       <button v-for="tank in computed_tanks" v-bind:value="tank" v-bind:key="tank.id" v-on:click="setTank(tank)" v-bind:class="['button is-rounded', [ isSelected(tank) ? 'is-link is-active' : '']]" v-bind:disabled="isSelected(tank)">{{tank}}</button>
     </div>
@@ -21,7 +19,7 @@
       <div class="index_slider">
         <vue-slider ref="slider" v-model="selected_index" :min="0" :max="31" :dotSize="50" :piecewise="true" size="360px"></vue-slider>
       </div>
-      <h2 class="title has-text-centered">Altura: {{selected_index}} cm</h2>
+      <h3 class="title is-3 has-text-centered">Altura: {{selected_index}} cm</h3>
     </div>
   </div>
 </template>
@@ -102,14 +100,17 @@ body {
 
 .calculator-screen {
   width: 100%;
-  font-size: 3rem;
+  font-size: 3.5rem;
   height: 120px;
   border: none;
   background-color: #252525;
   color: #fff;
-  text-align: right;
+  /*text-align: right;*/
+  justify-content: flex-end;
   padding-right: 20px;
   padding-left: 10px;
+  align-items: center;
+  display: flex;
 }
 
 .calculator-keys {
